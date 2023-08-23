@@ -1,10 +1,9 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { setCell, setCells } from "../redux/cell";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import type { RootState } from "../redux/store";
 import Cell from "./Cell";
 import type { TCell } from "../types/types";
-import { useInterval } from "usehooks-ts";
 
 function Main() {
   const cells = useAppSelector((state: RootState) => state.cell).cells;
