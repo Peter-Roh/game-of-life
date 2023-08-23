@@ -9,6 +9,7 @@ import { useInterval } from "usehooks-ts";
 function Main() {
   const [isPlaying, setIsPlaying] = useState(false);
   const cells = useAppSelector((state: RootState) => state.cell).cells;
+  const color = useAppSelector((state: RootState) => state.color).color;
   const dispatch = useAppDispatch();
   const onClick = useCallback(
     (a: number, b: number) => {
@@ -35,7 +36,9 @@ function Main() {
           const newX = x + dx;
           const newY = y + dy;
           if (dx !== 0 || dy !== 0) {
-            cnt += cells[(newX + 40) % 40][(newY + 40) % 40];
+            if (newX >= 0 && newX < 40 && newY >= 0 && newY < 40) {
+              cnt += cells[newX][newY];
+            }
           }
         }
       }
@@ -226,21 +229,24 @@ function Main() {
     () => {
       next();
     },
-    isPlaying ? 100 : null,
+    isPlaying ? 300 : null,
   );
 
   return (
     <>
       <div className="flex-y-center overflow-y-scroll pb-20 pt-10">
-        <div className="flex-x-center">
-          <button className="button mr-2" onClick={next}>
+        <div className="flex-x-center space-x-2">
+          <button
+            className={`button bg-${color}-500 focus:bg-${color}-600`}
+            onClick={next}
+          >
             Next
           </button>
-          <button className="button" onClick={play}>
+          <button className={`button bg-${color}-500`} onClick={play}>
             {isPlaying ? "Pause" : "Play"}
           </button>
         </div>
-        <div className="flex-y mt-4">
+        <div className="flex-y mt-4 px-8">
           {cells.map((elt, x) => {
             return (
               <div key={x} className="mb-[1px] flex space-x-[1px]">
@@ -251,6 +257,7 @@ function Main() {
                       cellState={cellState}
                       x={x}
                       y={y}
+                      color={color}
                       onClick={onClick}
                     />
                   );

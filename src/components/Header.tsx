@@ -9,7 +9,7 @@ function Header() {
   return (
     <>
       <header className="flex h-28 w-full border-0 border-b-[1px] border-slate-600">
-        <span className="flex-x-center ml-2">
+        <span className="flex-x-center ml-2 focus:outline-none">
           <button onClick={() => dispatch(toggleOpen())}>
             {isOpen ? (
               <svg

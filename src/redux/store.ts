@@ -6,12 +6,14 @@ import {
 import logger from "redux-logger";
 import sidebarSlice from "./sidebar";
 import cellSlice from "./cell";
+import colorSlice from "./color";
 
 function makeStore() {
   return configureStore({
     reducer: {
       sidebar: sidebarSlice.reducer,
       cell: cellSlice.reducer,
+      color: colorSlice.reducer,
     },
     middleware: (middleware) =>
       import.meta.env.DEV ? middleware().concat(logger) : middleware(),

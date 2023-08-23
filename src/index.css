@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .page-full {
-  @apply flex min-h-screen w-full;
+  @apply flex h-max min-h-screen w-full min-w-max;
 }
 
 .flex-y {
@@ -23,5 +23,13 @@
 }
 
 .button {
-  @apply rounded-md bg-rose-500 px-4 py-1 font-mono focus:outline-none focus:ring-1 focus:ring-rose-600  focus:ring-offset-2 focus:ring-offset-transparent;
+  @apply rounded-md px-4 py-1 font-mono focus:outline-none;
+}
+
+.color-btn {
+  @apply h-6 w-6 cursor-pointer rounded-md;
+}
+
+.sidebar-btn {
+  @apply flex-x-center cursor-pointer font-mono text-lg underline underline-offset-4;
 }
