@@ -1,11 +1,13 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { setCell, setCells } from "../redux/cell";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import type { RootState } from "../redux/store";
 import Cell from "./Cell";
 import type { TCell } from "../types/types";
+import { useInterval } from "usehooks-ts";
 
 function Main() {
+  const [isPlaying, setIsPlaying] = useState(false);
   const cells = useAppSelector((state: RootState) => state.cell).cells;
   const dispatch = useAppDispatch();
   const onClick = useCallback(
@@ -218,14 +220,14 @@ function Main() {
     dispatch(setCells(newCells));
   }, [dispatch, GoL, cells, countNeighbor]);
 
-  // const [isPlaying, setIsPlaying] = useState(false);
+  const play = () => setIsPlaying((state) => !state);
 
-  // useInterval(
-  //   () => {
-  //     next();
-  //   },
-  //   isPlaying ? 100 : null,
-  // );
+  useInterval(
+    () => {
+      next();
+    },
+    isPlaying ? 100 : null,
+  );
 
   return (
     <>
@@ -234,7 +236,9 @@ function Main() {
           <button className="button mr-2" onClick={next}>
             Next
           </button>
-          <button className="button">Play</button>
+          <button className="button" onClick={play}>
+            {isPlaying ? "Pause" : "Play"}
+          </button>
         </div>
         <div className="flex-y mt-4">
           {cells.map((elt, x) => {
