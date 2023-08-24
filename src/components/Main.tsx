@@ -5,6 +5,7 @@ import type { RootState } from "../redux/store";
 import Cell from "./Cell";
 import type { TCell } from "../types/types";
 import { useInterval } from "usehooks-ts";
+import { colorVariants } from "../common/value";
 
 function Main() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -236,13 +237,10 @@ function Main() {
     <>
       <div className="flex-y-center overflow-y-scroll pb-20 pt-10">
         <div className="flex-x-center space-x-2">
-          <button
-            className={`button bg-${color}-500 focus:bg-${color}-600`}
-            onClick={next}
-          >
+          <button className={`button ${colorVariants[color]}`} onClick={next}>
             Next
           </button>
-          <button className={`button bg-${color}-500`} onClick={play}>
+          <button className={`button ${colorVariants[color]}`} onClick={play}>
             {isPlaying ? "Pause" : "Play"}
           </button>
         </div>
@@ -254,6 +252,7 @@ function Main() {
                   return (
                     <Cell
                       key={y}
+                      type="Game"
                       cellState={cellState}
                       x={x}
                       y={y}

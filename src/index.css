@@ -27,7 +27,7 @@
 }
 
 .color-btn {
-  @apply h-6 w-6 cursor-pointer rounded-md;
+  @apply h-6 w-6 cursor-pointer rounded-sm;
 }
 
 .sidebar-btn {

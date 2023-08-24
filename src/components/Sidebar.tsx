@@ -1,7 +1,9 @@
+import { colorVariants } from "../common/value";
 import { setCells } from "../redux/cell";
 import { setColor } from "../redux/color";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import type { RootState } from "../redux/store";
+import Cell from "./Cell";
 
 function Sidebar() {
   const isOpen = useAppSelector((state: RootState) => state.sidebar).isOpen;
@@ -10,7 +12,6 @@ function Sidebar() {
   const changeColor = (color: string) => {
     dispatch(setColor(color));
   };
-
   const setGlider = () => {
     dispatch(
       setCells([
@@ -1032,38 +1033,6 @@ function Sidebar() {
         ],
         [
           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
           0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ],
         [
@@ -1170,6 +1139,38 @@ function Sidebar() {
           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
+        [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ],
       ]),
     );
   };
@@ -1178,10 +1179,10 @@ function Sidebar() {
     <>
       <aside
         className={`w-1/5 border-0 border-r-[1px] border-slate-600 ${
-          isOpen ? "flex-y-center" : "hidden"
+          isOpen ? "flex-y items-center justify-between" : "hidden"
         }`}
       >
-        <div className="mt-6">
+        <div className="mt-28">
           <div className="flex-x-center font-mono text-2xl font-semibold">
             Examples
           </div>
@@ -1207,47 +1208,21 @@ function Sidebar() {
             Gosper glider gun
           </div>
         </div>
-        <div className="mt-24">
+        <div className="mb-28">
           <div className="flex-x-center font-mono text-2xl font-semibold">
             Color of Cells
           </div>
           <div className="mt-4 grid grid-cols-5 gap-1 px-8">
-            <div
-              className="color-btn bg-fuchsia-500"
-              onClick={() => changeColor("fuchsia")}
-            />
-            <div
-              className="color-btn bg-rose-500"
-              onClick={() => changeColor("rose")}
-            />
-            <div
-              className="color-btn bg-amber-500"
-              onClick={() => changeColor("amber")}
-            />
-            <div
-              className="color-btn bg-yellow-500"
-              onClick={() => changeColor("yellow")}
-            />
-            <div
-              className="color-btn bg-lime-500"
-              onClick={() => changeColor("lime")}
-            />
-            <div
-              className="color-btn bg-blue-500"
-              onClick={() => changeColor("blue")}
-            />
-            <div
-              className="color-btn bg-indigo-500"
-              onClick={() => changeColor("indigo")}
-            />
-            <div
-              className="color-btn bg-violet-500"
-              onClick={() => changeColor("violet")}
-            />
-            <div
-              className="color-btn bg-zinc-500"
-              onClick={() => changeColor("zinc")}
-            />
+            {Object.keys(colorVariants).map((color) => {
+              return (
+                <Cell
+                  key={color}
+                  type="Setting"
+                  color={color}
+                  changeColor={() => changeColor(color)}
+                />
+              );
+            })}
           </div>
         </div>
       </aside>
