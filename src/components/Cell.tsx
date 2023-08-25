@@ -3,8 +3,8 @@ import type { TCell } from "../types/types";
 
 type CellSetting = {
   type: "Setting";
-  color: string;
-  changeColor: (color: string) => void;
+  color: keyof typeof colorVariants;
+  changeColor: (color: keyof typeof colorVariants) => void;
 };
 
 type CellGame = {
@@ -12,7 +12,7 @@ type CellGame = {
   cellState: TCell;
   x: number;
   y: number;
-  color: string;
+  color: keyof typeof colorVariants;
   onClick: (a: number, b: number) => void;
 };
 

@@ -1,7 +1,8 @@
 import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+import type { colorVariants } from "../common/value";
 
 export type ColorState = {
-  color: string;
+  color: keyof typeof colorVariants;
 };
 
 const initialState: ColorState = {
@@ -12,7 +13,7 @@ export const colorSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
-    setColor: (state, action: PayloadAction<string>) => {
+    setColor: (state, action: PayloadAction<keyof typeof colorVariants>) => {
       state.color = action.payload;
     },
   },

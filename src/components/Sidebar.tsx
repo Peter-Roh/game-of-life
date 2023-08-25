@@ -9,7 +9,7 @@ function Sidebar() {
   const isOpen = useAppSelector((state: RootState) => state.sidebar).isOpen;
   const dispatch = useAppDispatch();
 
-  const changeColor = (color: string) => {
+  const changeColor = <T extends keyof typeof colorVariants>(color: T) => {
     dispatch(setColor(color));
   };
   const setGlider = () => {
@@ -1382,16 +1382,18 @@ function Sidebar() {
             Color of Cells
           </div>
           <div className="mt-4 grid grid-cols-5 gap-1 px-8">
-            {Object.keys(colorVariants).map((color) => {
-              return (
-                <Cell
-                  key={color}
-                  type="Setting"
-                  color={color}
-                  changeColor={() => changeColor(color)}
-                />
-              );
-            })}
+            {(Object.keys(colorVariants) as (keyof typeof colorVariants)[]).map(
+              (color) => {
+                return (
+                  <Cell
+                    key={color}
+                    type="Setting"
+                    color={color}
+                    changeColor={() => changeColor(color)}
+                  />
+                );
+              },
+            )}
           </div>
         </div>
       </aside>
